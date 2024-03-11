@@ -30,10 +30,9 @@ class Authcontroler extends GetxController {
           return const HomePage();
         },
       ));
-      
     } catch (e) {
       print("Login failed: $e");
-     
+
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -43,7 +42,7 @@ class Authcontroler extends GetxController {
             actions: [
               TextButton(
                 onPressed: () {
-                  Navigator.of(context).pop(); 
+                  Navigator.of(context).pop();
                 },
                 child: const Text("OK"),
               ),
@@ -69,28 +68,51 @@ class Authcontroler extends GetxController {
       loading.value = false;
     }
   }
-
-  signpage(BuildContext context) async {
-    try {
+  signpage(BuildContext context,GlobalKey<FormState>  FormKeys) async {
+  try {
+    // Check if the form is valid before proceeding
+    if (FormKeys.currentState?.validate() ?? false) {
       loading.value = true;
+      
       await auth.createUserWithEmailAndPassword(
           email: email.text, password: password.text);
       print("Login successful");
       Navigator.of(context).push(MaterialPageRoute(
         builder: (context) {
           return const HomePage();
-
         },
       ));
       Get.snackbar("successfully", "");
 
       loading.value = false;
-      email.clear();
-      password.clear();
-    } catch (e) {
-      Get.snackbar("Error", "");
+     
     }
+  } catch (e) {
+    Get.snackbar("Error", "");
   }
+}
+
+
+  // signpage(BuildContext context) async {
+  //   try {
+  //     loading.value = true;
+  //     await auth.createUserWithEmailAndPassword(
+  //         email: email.text, password: password.text);
+  //     print("Login successful");
+  //     Navigator.of(context).push(MaterialPageRoute(
+  //       builder: (context) {
+  //         return const HomePage();
+  //       },
+  //     ));
+  //     Get.snackbar("successfully", "");
+
+  //     loading.value = false;
+  //     email.clear();
+  //     password.clear();
+  //   } catch (e) {
+  //     Get.snackbar("Error", "");
+  //   }
+  // }
 
   Logout(BuildContext context) async {
     await auth.signOut();

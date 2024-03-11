@@ -39,7 +39,7 @@ class TextFormFieldPage extends StatelessWidget {
             Iconss: const Icon(Icons.lock),
             obscureText: true,
             validators: (value) {
-              if (value == null) {
+              if (value == null || value.isEmpty) {
                 return 'Please enter your password';
               }
               return null;
