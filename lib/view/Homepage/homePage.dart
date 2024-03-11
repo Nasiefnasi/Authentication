@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, sort_child_properties_last
+
 import 'package:companytask/controller/authfunction.dart';
 import 'package:companytask/view/core.dart';
 
@@ -16,7 +18,7 @@ class HomePage extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.indigoAccent,
       body: SafeArea(
-          child: Container(
+          child: SizedBox(
         height: mediaquery.height,
         width: mediaquery.width,
         child: Column(

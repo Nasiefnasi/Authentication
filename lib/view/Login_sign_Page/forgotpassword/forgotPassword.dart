@@ -1,3 +1,4 @@
+// ignore_for_file: file_names, sort_child_properties_last
 
 import 'package:companytask/controller/authfunction.dart';
 import 'package:companytask/view/core.dart';
@@ -10,14 +11,14 @@ class ForgotPasswordPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-      final authcontol = Get.put(Authcontroler());
+    final authcontol = Get.put(Authcontroler());
 
     var mediaquery = MediaQuery.of(context).size;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.amber,
       body: SafeArea(
-          child: Container(
+          child: SizedBox(
         height: mediaquery.height,
         width: mediaquery.width,
         child: Column(
@@ -25,8 +26,8 @@ class ForgotPasswordPage extends StatelessWidget {
           children: [
             Container(
               clipBehavior: Clip.none,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20)),
+              decoration:
+                  BoxDecoration(borderRadius: BorderRadius.circular(20)),
               height: mediaquery.height * .30,
               width: mediaquery.width * .9,
               child: Card(
@@ -39,8 +40,11 @@ class ForgotPasswordPage extends StatelessWidget {
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                       hight20,
-                      TextFormfildWidget(obscureText: false,contro:authcontol.resetmail ,
-                          hinttext: "E-mail", Iconss: const Icon(Icons.mail)),
+                      TextFormfildWidget(
+                          obscureText: false,
+                          contro: authcontol.resetmail,
+                          hinttext: "E-mail",
+                          Iconss: const Icon(Icons.mail)),
                       ElevatedButton(
                           onPressed: () {
                             authcontol.forgotpassword();

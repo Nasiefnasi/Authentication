@@ -1,12 +1,10 @@
-// ignore_for_file: use_build_context_synchronously, avoid_print
+// ignore_for_file: use_build_context_synchronously, avoid_print, unnecessary_import, empty_catches, non_constant_identifier_names
 
-import 'package:companytask/view/Login_sign_Page/forgotPassword.dart';
-import 'package:companytask/view/Login_sign_Page/loginpage.dart';
-import 'package:companytask/view/homePage.dart';
+import 'package:companytask/view/Login_sign_Page/loginPage/loginpage.dart';
+import 'package:companytask/view/homepage/homePage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/get_rx.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 
 class Authcontroler extends GetxController {
