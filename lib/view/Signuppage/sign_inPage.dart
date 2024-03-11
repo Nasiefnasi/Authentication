@@ -72,8 +72,8 @@ class SignPage extends StatelessWidget {
                           style: const ButtonStyle(
                               backgroundColor:
                                   MaterialStatePropertyAll(Colors.greenAccent)),
-                          onPressed: () {
-                            cntol.signpage(context);
+                          onPressed: () async{
+                          await  cntol.signpage(context);
                             cntol.name.clear();
                             cntol.email.clear();
                             cntol.password.clear();

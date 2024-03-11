@@ -30,6 +30,7 @@ class Authcontroler extends GetxController {
           return const HomePage();
         },
       ));
+      
     } catch (e) {
       print("Login failed: $e");
      
@@ -68,43 +69,29 @@ class Authcontroler extends GetxController {
       loading.value = false;
     }
   }
-Future<void> signpage(BuildContext context) async {
-  try {
-    if (!_validateForm()) {
-      return;
+
+  signpage(BuildContext context) async {
+    try {
+      loading.value = true;
+      await auth.createUserWithEmailAndPassword(
+          email: email.text, password: password.text);
+      print("Login successful");
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) {
+          return const HomePage();
+
+        },
+      ));
+      Get.snackbar("successfully", "");
+
+      loading.value = false;
+      email.clear();
+      password.clear();
+    } catch (e) {
+      Get.snackbar("Error", "");
     }
-
-    loading.value = true;
-
-    await auth.createUserWithEmailAndPassword(
-      email: email.text,
-      password: password.text,
-    );
-
-    print("Sign Up successful");
-
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(
-        builder: (context) => const HomePage(),
-      ),
-    );
-
-    loading.value = false;
-    email.clear();
-    password.clear();
-  } catch (e) {
-    print("Error during sign up: $e");
-   
   }
-}
 
-bool _validateForm() {
-  return GetUtils.isEmail(email.text) &&
-      password.text.isNotEmpty &&
-      password.text.length >= 6;
-}
-
-  
   Logout(BuildContext context) async {
     await auth.signOut();
     Navigator.of(context).pushAndRemoveUntil(
